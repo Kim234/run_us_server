@@ -1,5 +1,7 @@
 package com.server.runus;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +12,7 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 
 @Configuration
+@SpringBootApplication(exclude={SecurityAutoConfiguration.class})
 public class SwaggerConfig {
     @Bean
     public OpenAPI openAPI() {
@@ -29,7 +32,7 @@ public class SwaggerConfig {
     }
     private Info apiInfo() {
         return new Info()
-                .title("API Test") // API의 제목
+                .title("API Test + CI/CD TEST") // API의 제목
                 .description("Let's practice Swagger UI") // API에 대한 설명
                 .version("1.0.0"); // API의 버전
     }
