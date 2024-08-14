@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 public class RunUsServerApplication {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(RunUsServerApplication.class, args);
 	}
 
