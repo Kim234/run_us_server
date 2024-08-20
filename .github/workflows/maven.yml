@@ -19,8 +19,8 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean package --file pom.xml
-    - name: Docker Existing Image Delete
-      run: docker rmi --force 8woong/spring-docker
+
+    # Docker Image Build
     - name: Docker Image Build
       run: docker build -t 8woong/spring-docker .
     
@@ -31,6 +31,10 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    # Docker Existing Images Delete
+    - name: Docker Existing Image Delete
+      run: docker rmi --force 8woong/spring-docker
+      
     # Docker Hub push
     - name: docker Hub push
       run: docker push 8woong/spring-docker
