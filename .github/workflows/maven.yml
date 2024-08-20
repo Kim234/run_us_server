@@ -30,10 +30,6 @@ jobs:
       with: 
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-    # Docker Existing Images Delete
-    - name: Docker Existing Image Delete
-      run: docker rmi --force 8woong/spring-docker
       
     # Docker Hub push
     - name: docker Hub push
