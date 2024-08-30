@@ -23,7 +23,7 @@ public class MemberController {
     }
 
     @PostMapping("/signUp/do")
-    @Operation(summary = "업체 회원가입", description = "업체 측에서 회원가입 할 때 사용하는 API")
+    @Operation(summary = "회원가입 테스트", description = "러너스 회원가입 API 테스트")
     @ApiResponses({
         @ApiResponse(responseCode  = "200", description = "성공입니다.")
         , @ApiResponse(responseCode  = "400", description = "접근이 올바르지 않습니다.")
