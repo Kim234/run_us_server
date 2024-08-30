@@ -18,8 +18,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
-          # Docker Image Build
+      run: mvn clean package --file pom.xml
+
+    # Docker Image Build
     - name: Docker Image Build
       run: docker build -t 8woong/spring-docker .
     
@@ -29,7 +30,7 @@ jobs:
       with: 
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-
+      
     # Docker Hub push
     - name: docker Hub push
       run: docker push 8woong/spring-docker
@@ -64,7 +65,9 @@ jobs:
         script: | #Docker Image명 기입, port 기입
           sudo docker stop spring-docker
           sudo docker rm spring-docker
+          sudo docker pull 8woong/spring-docker
           sudo docker run -it -d -p 8080:8080 --name spring-docker 8woong/spring-docker
+          sudo docker image prune -f
     
     # REMOVE Github IP FROM security group (9)
     - name: Remove IP FROM security group
